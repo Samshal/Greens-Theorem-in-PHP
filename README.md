@@ -5,6 +5,6 @@ This is an implementation of greens theorem to calculate the area of an irregula
 1. It can be used to calculate the area of any place (a city, school and so on) provided their coordinates are known
 2. It can be useful in situations where the distance around a place needs to be calculated
 
-The class accepts an array of Points (x, y coordinates) as parameter. This points are then summed up into the vertices of an irregular polygon which can be used to calculate the area and distance along the perimeter
+The class accepts an array of Points (x, y coordinates) as parameter. This points are then summed up into the vertices of an irregular polygon which can be used to calculate the area and distance along the polygonal shape
 
 
