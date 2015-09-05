@@ -16,7 +16,8 @@
 
 		protected function isPoint()
 		{
-
+			//checks to determine we've got a valid point
+			
 		}
 
 		private function toString()

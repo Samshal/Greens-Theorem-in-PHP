@@ -1,5 +1,5 @@
 <?php
-	require_once("point.class.php");
+	require_once("point.class.php"); //imports the Point object
 	class Polygon
 	{
 		protected $vertices = array();
@@ -8,7 +8,7 @@
 			$pointObj = new Point();
 			try
 			{
-				foreach (func_get_args() as $vertice)
+				foreach (func_get_args() as $vertice) //Constructor accepts unlimited number of Points (Point Objects)
 				{
 					if (!is_null($vertice))
 					{
@@ -31,7 +31,7 @@
 			}
 		}
 
-		public function setVertice($vertice)
+		public function setVertice($vertice) //Accepts a single point object (a single coordinate)
 		{
 			try
 			{
@@ -54,7 +54,7 @@
 			}
 		}
 
-		public function setVertices()
+		public function setVertices() //Accepts more that one point objects (Multiple coordinates)
 		{
 			$pointObj = new Point();
 			try
@@ -79,7 +79,7 @@
 			return true;
 		}
 
-		public function area()
+		public function area() //Calculates area of polygon
 		{
 			if (self::isPolygon())
 			{
@@ -103,7 +103,7 @@
 			}
 		}
 
-		public function perimeter()
+		public function perimeter() //calculates distance around the polygon
 		{
 			if (self::isPolygon())
 			{
@@ -176,7 +176,7 @@
 			}
 		}
 
-		private function checkLineType($x, $y)
+		private function checkLineType($x, $y) //determines if a line is straight or diagonal
 		{
 			if (!is_array($x) || !is_array($y))
 			{
@@ -224,7 +224,7 @@
 			}
 		}
 
-		public function getVertices()
+		public function getVertices() //returns the supplied vertices
 		{
 			return $this->vertices;
 		}
