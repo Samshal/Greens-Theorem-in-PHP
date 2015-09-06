@@ -3,9 +3,10 @@
 	class Polygon
 	{
 		protected $vertices = array();
+		private $pointObj;
 		public function __construct($vertice = null)
 		{
-			$pointObj = new Point();
+			$this->pointObj = new Point();
 			try
 			{
 				foreach (func_get_args() as $vertice) //Constructor accepts unlimited number of Points (Point Objects)
@@ -39,7 +40,7 @@
 				{
 					$this->vertices[] = $vertice;
 				}
-				else if (is_object($vertice) && ($vertice instanceof $pointObj))
+				else if (is_object($vertice) && ($vertice instanceof $this->pointObj))
 				{
 					$this->vertices[] = $vertice->point();
 				}
@@ -56,7 +57,6 @@
 
 		public function setVertices() //Accepts more that one point objects (Multiple coordinates)
 		{
-			$pointObj = new Point();
 			try
 			{
 				foreach (func_get_args() as $vertice)
@@ -230,4 +230,3 @@
 		}
 	}
 ?>
-
