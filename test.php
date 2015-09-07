@@ -8,4 +8,3 @@
 	echo ($polygon->perimeter()); //returns the perimeter of the polygon (the distance around the polygonal shape or object)
 
 ?>
-
