@@ -3,9 +3,17 @@
 	class Polygon
 	{
 		protected $vertices = array();
+		private $pointObj;
+
+		/*
+				method: @constructor();
+				accepts an unlimited number of  Point objects (vertices) to represent the coordinates of 
+				the polygon on an x-y plane
+
+		*/
 		public function __construct($vertice = null)
 		{
-			$pointObj = new Point();
+			$this->pointObj = new Point();
 			try
 			{
 				foreach (func_get_args() as $vertice) //Constructor accepts unlimited number of Points (Point Objects)
@@ -22,6 +30,11 @@
 			}
 		}
 
+		/*
+			@method: displayPointInvalidError()
+			throws an exception, accepts an optional parameter that determines if
+			the already predefined vertice-array should be emptied or not
+		*/
 		private function displayPointInvalidError($empty = false)
 		{
 			echo "Invalid point detected in supplied parameters";
@@ -31,6 +44,13 @@
 			}
 		}
 
+		/*
+			@method: serVertice()
+			accepts a single point object and appends it's value to the already
+			predfined $vertices array
+			parameter must a Point Object (example: new Point(2, 3));
+		*/
+
 		public function setVertice($vertice) //Accepts a single point object (a single coordinate)
 		{
 			try
@@ -39,7 +59,7 @@
 				{
 					$this->vertices[] = $vertice;
 				}
-				else if (is_object($vertice) && ($vertice instanceof $pointObj))
+				else if (is_object($vertice) && ($vertice instanceof $this->pointObj))
 				{
 					$this->vertices[] = $vertice->point();
 				}
@@ -54,9 +74,15 @@
 			}
 		}
 
+		/*
+			@method: setVertices()
+			extends the setVertice method, unlike the setVertice method
+			it accepts multiple parameters
+			example implementation (setVertices(new Point(2, 34), new Point(3, 12), ))
+		*/
+
 		public function setVertices() //Accepts more that one point objects (Multiple coordinates)
 		{
-			$pointObj = new Point();
 			try
 			{
 				foreach (func_get_args() as $vertice)
@@ -102,6 +128,13 @@
 				return $verticeSigma;
 			}
 		}
+
+		/*
+			@method = perimeter()
+			Determines the distance round a polygonal object or shape
+			checks if a line is straight or diagonal before applying an 
+			aroriate an formular
+		*/
 
 		public function perimeter() //calculates distance around the polygon
 		{
@@ -176,6 +209,12 @@
 			}
 		}
 
+		/*
+			@method = checkLineType
+			routes between the isStraightLine() and isDiagonalLine() methods for determining the line type between
+			row vertices (coordinates)
+
+		*/
 		private function checkLineType($x, $y) //determines if a line is straight or diagonal
 		{
 			if (!is_array($x) || !is_array($y))
@@ -200,6 +239,10 @@
 			}
 		}
 
+		/*
+			Determines if a line is a Straight line
+		
+		*/
 		public function isStraightLine($x, $y)
 		{
 			if ($x[0] == $x[1] || $y[0] == $y[1])
@@ -212,6 +255,10 @@
 			}
 		}
 
+		/*
+			@method: isDiagonalLine()
+			Determines if a line is diagonal
+		*/
 		public function isDiagonalLine($x, $y)
 		{
 			if (!$this->isStraightLine($x, $y))
@@ -224,6 +271,10 @@
 			}
 		}
 
+		/*
+			@method: getVertices()
+			The user may need to view an array of the predefined vertices, hence the function below
+		*/
 		public function getVertices() //returns the supplied vertices
 		{
 			return $this->vertices;
