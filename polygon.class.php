@@ -174,7 +174,6 @@
 						}
 
 						print_r(array(array($xedgeOne, $xedgeTwo), array($yedgeOne, $yedgeTwo)));
-						echo "<br/>".$distance."<br/>";
 						$verticeSigma += $distance;
 					}
 				}
