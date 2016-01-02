@@ -1,15 +1,31 @@
 <?php
+	/**
+	 * A PHP implementation of Green's Theorem to determine the area of an irregular polygon
+	 *
+	 * @author Samuel Adeshina <samueladeshina73@gmail.com> <http://samshal.githb.io>
+	 * @copyright 2016 samuel adeshina, all rights reserved
+	 * @license MIT
+	 * @since 1.0 October, 2015
+	 * @version 1.0.1
+	 */
+
+	/**
+	 * We include the "point.class.php" class file below using the require keyword.
+	 * This line should be removed if the parent project has an autoloader.
+	*/
 	require_once("point.class.php"); //imports the Point object
+
 	class Polygon
 	{
 		protected $vertices = array();
 		private $pointObj;
 
-		/*
-				method: @constructor();
-				accepts an unlimited number of  Point objects (vertices) to represent the coordinates of 
-				the polygon on an x-y plane
-
+		/**
+		*	constructor
+		*
+		*	accepts an unlimited number of  Point objects (vertices) to represent the coordinates of 
+		*	the polygon on an x-y plane
+		*
 		*/
 		public function __construct($vertice = null)
 		{
@@ -30,10 +46,12 @@
 			}
 		}
 
-		/*
-			@method: displayPointInvalidError()
-			throws an exception, accepts an optional parameter that determines if
-			the already predefined vertice-array should be emptied or not
+		/**
+		 * displayPointInvalidError()
+		 * throws an exception, accepts an optional parameter that determines if
+		 * the already predefined vertice-array should be emptied or not
+		 *
+		 * @param boolean $empty
 		*/
 		private function displayPointInvalidError($empty = false)
 		{
@@ -43,12 +61,14 @@
 				$this->vertices = array();
 			}
 		}
-
-		/*
-			@method: serVertice()
-			accepts a single point object and appends it's value to the already
-			predfined $vertices array
-			parameter must a Point Object (example: new Point(2, 3));
+		
+		/**
+		 * setVertice()
+		 * accepts a single point object and appends it's value to the already
+		 * predfined $vertices array
+		 * parameter must a Point Object (example: new Point(2, 3));
+		 *
+		 * @param \point $vertice
 		*/
 
 		public function setVertice($vertice) //Accepts a single point object (a single coordinate)
